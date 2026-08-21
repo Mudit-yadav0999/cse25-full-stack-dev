@@ -1,39 +1,34 @@
-//event
-//EventEmiiter is class in which we have to usw emit("event emit")
-//program 1 and 2
-// emit() on()
-
+//Event
+//EventEmitter is class in which we have to use emit("event emit param") for trigger./create/fire event and on("emit param",callback fun) is a listener that will for register your event
+//Program 1 
+//emit() on()
 // const EventEmitter=require("events");
-// const event= new EventEmitter();
-// event.on("greet",()=>{
-//     console.log("thid is event emiter");
-//))
-
-
+// const event=new EventEmitter();
+// // event.on("greet",()=>{
+// //     console.log("this is event emitter");
+    
+// // })
+// event.once("greet",()=>{
+//     console.log("event trigger only one time");
+    
+// })
 // event.emit("greet");
 // event.emit("greet");
 // event.emit("greet");
+// event.emit("greet");
+//Program 1:create custom EventEmitter that trigger "greet" or "exit"
+// class MyEmitter extends EventEmitter{}
+// const event=new MyEmitter()
+// event.on("greet",(name)=>{
+// console.log(`hello ${name}`);//template literals`${}`
 
+// })
+// event.on("exit",()=>{
+//     console.log("exits mycustom event emitter..");
+    
+// })
+// event.emit("greet","cse24");
+// event.emit("exit");
+//2. Simulate DOM-like event handling in Node.js using events
+//DOM :click,mouseover
 
-//progran1:create custom event emitter that triugger "greet" or "exit"
-const EventEmitter = require("events");
-
-class MyEmitter extends EventEmitter {}
-
-const myEmitter = new MyEmitter();
-
-// greet event
-myEmitter.on("greet", (name) => {
-    console.log(`Hello, ${name}!`);
-});
-
-// exit event
-myEmitter.on("exit", () => {
-    console.log("Goodbye! Exiting the program...");
-});
-
-// Trigger greet
-myEmitter.emit("greet", "Mudit");
-
-// Trigger exit
-myEmitter.emit("exit");

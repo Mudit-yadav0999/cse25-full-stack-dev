@@ -1,0 +1,23 @@
+lecture1:
+git status
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/satwikteotia/fsdbackedndcodecse25.git
+git push -u origin main
+ls
+ls -a
+git fetch origin master
+gti log
+
+t init doesn’t initialize if you already have a .git/ folder in your repository. So, for your case, do -
+ rm -rf .git/
+
+(2) git init
+
+(3) git remote add origin https://repository.remote.url
+
+(4) git commit -m “Commit message”
+
+(5) git push -f origin master

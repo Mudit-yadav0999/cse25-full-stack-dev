@@ -1,0 +1,1 @@
+this is create command in fs using writeFile("filename","content",callback fun for error)
