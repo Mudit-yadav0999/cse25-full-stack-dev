@@ -1,60 +1,37 @@
 const http = require("http");
 const fs = require("fs");
-
 const PORT = 3000;
-
-// Create students.json if it doesn't exist
 if (!fs.existsSync("students.json")) {
     fs.writeFileSync("students.json", "[]");
 }
-
 const server = http.createServer((req, res) => {
-
-    // =========================
-    // PART 1: FORM
-    // =========================
-
     if (req.method === "GET" && req.url === "/") {
 
         res.writeHead(200, {
             "Content-Type": "text/html"
         });
-
         res.end(`
             <h1>Welcome to Student Record System</h1>
-
             <form method="POST" action="/add">
-
                 Student Name:
                 <input type="text" name="name" required>
                 <br><br>
-
                 Roll Number:
                 <input type="text" name="roll" required>
                 <br><br>
-
                 Course:
                 <input type="text" name="course" required>
                 <br><br>
-
                 Email:
                 <input type="email" name="email" required>
                 <br><br>
-
                 <button type="submit">Add Student</button>
-
             </form>
-
             <br>
 
             <a href="/students">View Student Records</a>
         `);
     }
-
-
-    // =========================
-    // PART 2: ADD STUDENT
-    // =========================
 
     else if (req.method === "POST" && req.url === "/add") {
 
@@ -124,11 +101,6 @@ const server = http.createServer((req, res) => {
         });
     }
 
-
-    // =========================
-    // PART 3: DISPLAY STUDENTS
-    // =========================
-
     else if (req.method === "GET" && req.url === "/students") {
 
         fs.readFile("students.json", "utf8", (err, data) => {
@@ -183,11 +155,6 @@ const server = http.createServer((req, res) => {
         });
     }
 
-
-    // =========================
-    // INVALID ROUTE
-    // =========================
-
     else {
 
         res.writeHead(404);
@@ -195,9 +162,6 @@ const server = http.createServer((req, res) => {
     }
 
 });
-
-
-// Start Server
 server.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
